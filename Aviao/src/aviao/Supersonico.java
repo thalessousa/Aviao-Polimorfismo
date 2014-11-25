@@ -11,4 +11,33 @@ package aviao;
  */
 public class Supersonico extends Militar{
     private float maxSpeed;
+    
+    public Supersonico(int numPassag, String modelo, int altitude, float horasVoo, 
+                   float combustivel, int municao, int qtdBombas, boolean alerta,
+                   boolean sobAtaque, float maxSpeed){
+        super(numPassag, modelo, altitude, horasVoo, combustivel, municao, qtdBombas, alerta,sobAtaque);
+        setMaxSpeed(maxSpeed);
+    }
+    
+    public Supersonico(){
+        setMaxSpeed(1255);
+    }
+    
+    public final void setMaxSpeed(float maxSpeed){
+        this.maxSpeed = maxSpeed;
+    }
+    
+    @Override
+    public void print(){
+            System.out.println("Este é um Supersônico"
+                    + "   \nNUMERO_DE_ASAS = 2;\n" +
+            "Quantidade de aviões construídos: " + qtdAvioes +
+            "\nModelo deste avião: " + modelo +
+            "\nHoras de vôo programado: " + horasVoo +
+            "\nCombustível atual: " + combustivel +
+            "\nTurbulência: " + alerta +
+            "\nAtitude: " + altitude + 
+            "\nQuantidade de munição: " + municao + 
+            "\nQuantidade de bombas: " + qtdBombas + "\n");
+        }
 }

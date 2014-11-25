@@ -13,9 +13,9 @@ import java.util.logging.Logger;
  * @author Yvan
  */
 public class Militar extends Aviao{
-    private int municao;
-    private int qtdBombas;
-    private boolean sobAtaque;
+    protected int municao;
+    protected int qtdBombas;
+    protected boolean sobAtaque;
     
     public Militar(int numPassag, String modelo, int altitude, float horasVoo, 
                    float combustivel, int municao, int qtdBombas, boolean alerta,
@@ -67,7 +67,7 @@ public class Militar extends Aviao{
     }
     
     @Override
-    public final void print(){
+    public void print(){
             System.out.println("Este é um avião Militar");
         }
     
