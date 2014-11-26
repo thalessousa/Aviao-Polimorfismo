@@ -43,16 +43,16 @@ public class Multimotor extends AviaoCivil{
     }
     
     @Override
-    public void print(){
-            System.out.println("Este é um Mono/Multimotor"
+    public String toString(){
+            return "Este é um Mono/Multimotor"
                     + "   \nNUMERO_DE_ASAS = 2;\n" +
-"Quantidade de aviões construídos: " + qtdAvioes +
-"\nModelo deste avião: " + modelo +
-"\nHoras de vôo programado: " + horasVoo +
-"\nCombustível atual: " + combustivel +
-"\nTurbulência: " + alerta +
-"\nAtitude: " + altitude + 
-"\nQuantidade de motores: " + qtdMotor + "\n");
+                      "Quantidade de aviões construídos: " + qtdAvioes +
+                      "\nModelo deste avião: " + modelo +
+                      "\nHoras de vôo programado: " + horasVoo +
+                      "\nCombustível atual: " + combustivel +
+                      "\nTurbulência: " + alerta +
+                      "\nAtitude: " + altitude + 
+                      "\nQuantidade de motores: " + qtdMotor + "\n";
         }
     
     

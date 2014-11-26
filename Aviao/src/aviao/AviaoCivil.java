@@ -53,8 +53,8 @@ public class AviaoCivil extends Aviao {
     }
     
     @Override
-    public void print(){
-            System.out.println("Este é um avião Civil");
+    public String toString(){
+            return "Este é um avião Civil";
         }
     
     @Override

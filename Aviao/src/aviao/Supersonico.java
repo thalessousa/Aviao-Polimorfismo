@@ -29,8 +29,8 @@ public class Supersonico extends AviaoMilitar{
     }
     
     @Override
-    public void print(){
-            System.out.println("Este é um Supersônico"
+    public String toString(){
+            return "Este é um Supersônico"
                     + "   \nNUMERO_DE_ASAS = 2;\n" +
             "Quantidade de aviões construídos: " + qtdAvioes +
             "\nModelo deste avião: " + modelo +
@@ -39,6 +39,6 @@ public class Supersonico extends AviaoMilitar{
             "\nTurbulência: " + alerta +
             "\nAtitude: " + altitude + 
             "\nQuantidade de munição: " + municao + 
-            "\nQuantidade de bombas: " + qtdBombas + "\n");
+            "\nQuantidade de bombas: " + qtdBombas + "\n";
         }
 }

@@ -54,9 +54,14 @@ public class main {
             System.out.println("Insira a quantidade de assentos: ");
             respAssentos = input.nextInt();
             
-            AviaoCivil a = new Multimotor(respPassag, respModelo, respAlt, respHoras, respComb, false, respAssentos, 2);
+            AviaoCivil aviao = new Multimotor(respPassag, respModelo, respAlt, respHoras, respComb, false, respAssentos, 2);
+            Multimotor a = null;
+            
+            if (aviao instanceof Multimotor){
+                a = (Multimotor) aviao;
+            }
        
-        a.print();
+        System.out.println(a);
         
         System.out.println("Adicione 2 mercadorias (por exemplo: Geladeira)");
         String aux;
@@ -112,7 +117,7 @@ public class main {
         
         AviaoMilitar a = new Supersonico(respPassag, respModelo, respAlt, respHoras, respComb, respMunicao, respBombas, false, false, respMaxSpeed);
         
-        a.print();
+        System.out.println(a);
         
         a.voar();
         

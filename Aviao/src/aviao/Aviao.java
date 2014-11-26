@@ -7,6 +7,7 @@ package aviao;
 
 import meiotransporte.MeioTransporte;
 import interfaces.Voador;
+import java.lang.Comparable;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Yvan
  */
-public class Aviao extends MeioTransporte implements Voador{
+public class Aviao extends MeioTransporte implements Voador {
        protected static final int NUMERO_DE_ASAS = 2;
        protected static int qtdAvioes = 0;
        protected String modelo;
@@ -113,6 +114,11 @@ public class Aviao extends MeioTransporte implements Voador{
             return altitude;
         }       
        
+       /*@Override
+       public int compareTo(Aviao a){
+           return this.modelo.compareTo(a.getModelo());
+       }*/
+       
        @Override
        public void voar(){
            setVoando(true);
@@ -159,8 +165,9 @@ public class Aviao extends MeioTransporte implements Voador{
            System.out.println("\nSeu avião pousou com sucesso!!!");
        }
        
-       public void print(){
-           System.out.println("Este é um avião qualquer");
+       @Override
+       public String toString(){
+           return "Este é um avião qualquer";
        }
         
        public static void qtdAvioes(){

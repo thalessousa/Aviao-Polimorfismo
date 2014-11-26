@@ -67,8 +67,8 @@ public class AviaoMilitar extends Aviao{
     }
     
     @Override
-    public void print(){
-            System.out.println("Este é um avião Militar");
+    public String toString(){
+            return "Este é um avião Militar";
         }
     
     public void atirar(){
