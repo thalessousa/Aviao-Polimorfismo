@@ -9,7 +9,7 @@ package aviao;
  *
  * @author Yvan
  */
-public class Supersonico extends Militar{
+public class Supersonico extends AviaoMilitar{
     private float maxSpeed;
     
     public Supersonico(int numPassag, String modelo, int altitude, float horasVoo, 
@@ -24,6 +24,7 @@ public class Supersonico extends Militar{
     }
     
     public final void setMaxSpeed(float maxSpeed){
+        if(maxSpeed < 2179)
         this.maxSpeed = maxSpeed;
     }
     

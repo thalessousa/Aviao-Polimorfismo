@@ -10,5 +10,23 @@ package pessoa;
  * @author Yvan
  */
 public class Pessoa {
+    protected String nome;
+    
+    public Pessoa(String nome){
+        this.nome = nome;
+    }
+    
+    public Pessoa(){
+        this.nome = "Desconhecido";
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    
     
 }

@@ -22,6 +22,7 @@ public class Aviao extends MeioTransporte implements Voador{
        protected float combustivel;
        protected boolean alerta;
        protected int altitude;
+       protected boolean voando;
               
        public Aviao (int numPassag, String modelo, int altitude, 
                      float horasVoo, float combustivel, boolean alerta){
@@ -32,6 +33,7 @@ public class Aviao extends MeioTransporte implements Voador{
            setAlerta(alerta);
            Aviao.qtdAvioes++;
            this.modelo = modelo;
+           this.voando = false;
        }
        
        public Aviao(){
@@ -41,6 +43,7 @@ public class Aviao extends MeioTransporte implements Voador{
            setAlerta(false);
            Aviao.qtdAvioes++;
            this.modelo = "Batplane";
+           this.voando = false;
        }
        
        public final void setAltitude(int valor){
@@ -52,6 +55,12 @@ public class Aviao extends MeioTransporte implements Voador{
            else
                this.altitude = valor;
        }
+
+    public void setVoando(boolean voando) {
+        this.voando = voando;
+    }
+
+    
        public final void setHorasVoo(float valor){
            if(valor > 15){
                System.out.println("WOW!!! Nem o avião com o maior tanque de combustível aguentaria tanto."
@@ -67,6 +76,11 @@ public class Aviao extends MeioTransporte implements Voador{
            }
            this.combustivel = valor;
        }
+       
+       public boolean isVoando() {
+        return voando;
+       }
+       
        public final void setAlerta(boolean flag){
            this.alerta = flag;
        }
@@ -101,6 +115,7 @@ public class Aviao extends MeioTransporte implements Voador{
        
        @Override
        public void voar(){
+           setVoando(true);
            System.out.println("Verificando dados do avião.");
            for(int i = 0; i < 3; i++){
                System.out.print(". ");
@@ -110,25 +125,28 @@ public class Aviao extends MeioTransporte implements Voador{
                    Logger.getLogger(Aviao.class.getName()).log(Level.SEVERE, null, ex);
                }
            }
-           if (this.combustivel > 3000){
+           if (this.combustivel >= 3000){
                System.out.println("\nAviao apto para o vôo. Seu avião levantou vôo.");
                this.combustivel = this.combustivel - 2000;
            }
            else{
                Scanner input = new Scanner(System.in);
-               System.out.println("\nAviao não está apto para vôo. Aceita reabastecer?[y/n]");
+               System.out.println("\nAviao não está apto para vôo. Aceita reabastecer?[y/n]. P.S.: O minimo para o vôo é 3000 e seu avião tem só " + this.combustivel);
                String d = input.nextLine();
                if (d.equals("y")){
                    System.out.println("Insira a quantidade adicional ");
                    int aux = input.nextInt();
-                   setCombustivel(aux);
+                   setCombustivel(this.combustivel+aux);
                    voar();
+               }else{
+                   setVoando(false);
                }
                
            }
        }
        
        public void pousar(){
+           setVoando(false);
            System.out.println("Seu avião está pousando.");
            for(int i = 0; i < 3; i++){
                System.out.print(". ");

@@ -5,11 +5,14 @@
  */
 package aviao;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Yvan
  */
-public class Multimotor extends Civil{
+public class Multimotor extends AviaoCivil{
     private int qtdMotor;
     
     public Multimotor(int numPassag, String modelo, int altitude, 
@@ -51,5 +54,7 @@ public class Multimotor extends Civil{
 "\nAtitude: " + altitude + 
 "\nQuantidade de motores: " + qtdMotor + "\n");
         }
+    
+    
     
 }

@@ -6,10 +6,10 @@
 package main;
 
 import aviao.Aviao;
-import aviao.Civil;
-import aviao.Militar;
+import aviao.AviaoCivil;
+import aviao.AviaoMilitar;
 import aviao.Multimotor;
-import aviao.Militar;
+import aviao.AviaoMilitar;
 import aviao.Supersonico;
 import pistas.Pista;
 import java.util.Scanner;
@@ -36,27 +36,31 @@ public class main {
     
     public static void funcaoCivil(){
         Scanner input = new Scanner(System.in);
-        System.out.println("Você quer construir seu própiro avião? (Se a resposta é não será construído um avião padrão)"
-                + "\n1 - Sim\n2 - Não\n");
-        int esc = input.nextInt();
-        if (esc == 1){
-            /*int numPassag, String modelo, int altitude, 
-                  float horasVoo, float combustivel, int numAssentos, boolean alerta*/
+        System.out.println("Contrua seu avião");
+        
+            int respPassag, respAlt, respAssentos;
+            float respHoras, respComb;
+            String respModelo;
             System.out.println("Insira o numero de passageiros para viagem: ");
+            respPassag = input.nextInt();
             System.out.println("Insira o modelo do avião: ");
+            respModelo = input.nextLine();
             System.out.println("Insira a altitude que o avião alcançará(km): ");
+            respAlt = input.nextInt();
             System.out.println("Insira a estimativa de horas de voô: ");
+            respHoras = input.nextFloat();
             System.out.println("Insira a quantidade de combustível no avião(l): ");
-            System.out.println("");
-        }
-        
-        Civil a = new Multimotor();
-        
+            respComb = input.nextFloat();
+            System.out.println("Insira a quantidade de assentos: ");
+            respAssentos = input.nextInt();
+            
+            AviaoCivil a = new Multimotor(respPassag, respModelo, respAlt, respHoras, respComb, false, respAssentos, 2);
+       
         a.print();
         
         System.out.println("Adicione 2 mercadorias (por exemplo: Geladeira)");
         String aux;
-        for(int i=0; i<2; i++){
+        for(int i=0; i<3; i++){
             aux = input.nextLine();
             a.setListaMercadorias(aux);
         }
@@ -66,41 +70,61 @@ public class main {
         System.out.println();
         
         
-        System.out.println("Quando estiver pronto para pousar, insira s minúsculo.");
-        do{
-            aux = input.nextLine();
-        }while(!aux.equals("s"));
-        Pista p = new Pista();        
-        p.permitirPouso(a);
-        /*for(int index =0; index < a.getListaMercadorias().size(); index++){
-            System.out.println(a.getListaMercadorias().get(index));
-        }*/
+        if(a.isVoando()){
+            System.out.println("Quando estiver pronto para pousar, insira s minúsculo.");
+            do{
+                aux = input.nextLine();
+            }while(!aux.equals("s"));
+            Pista p = new Pista();
+            p.permitirPouso(a);
+        }
     }
     
     public static void funcaoMilitar(){
         Scanner input = new Scanner(System.in);
         String aux;
-        Militar a = new Supersonico();
+        
+        /*int numPassag, String modelo, int altitude, float horasVoo, 
+                   float combustivel, int municao, int qtdBombas, boolean alerta,
+                   boolean sobAtaque, float maxSpeed*/
+        
+            int respPassag, respAlt, respAssentos, respMunicao, respBombas;
+            float respHoras, respComb, respMaxSpeed;
+            String respModelo;
+            System.out.println("Insira a quantidade de pilotos para viagem: ");
+            respPassag = input.nextInt();
+            System.out.println("Insira o modelo do avião: ");
+            respModelo = input.nextLine();
+            System.out.println("Insira a altitude que o avião alcançará(km): ");
+            respAlt = input.nextInt();
+            System.out.println("Insira a estimativa de horas de voô: ");
+            respHoras = input.nextFloat();
+            System.out.println("Insira a quantidade de combustível no avião(l): ");
+            respComb = input.nextFloat();
+            System.out.println("Insira a quantidade de assentos: ");
+            respAssentos = input.nextInt();
+            System.out.println("Insira a quantidade de municao: ");
+            respMunicao = input.nextInt();
+            System.out.println("Insira a quantidade de bombas: ");
+            respBombas = input.nextInt();
+            System.out.println("Insira a velociade máxima deste avião(km/h): ");
+            respMaxSpeed = input.nextFloat();
+        
+        AviaoMilitar a = new Supersonico(respPassag, respModelo, respAlt, respHoras, respComb, respMunicao, respBombas, false, false, respMaxSpeed);
         
         a.print();
         
-        /*System.out.println("Adicione 2 mercadorias (por exemplo: Geladeira)");
-        
-        for(int i=0; i<2; i++){
-            aux = input.nextLine();
-            a.setListaMercadorias(aux);
-        }
-        System.out.println();*/
         a.voar();
         
         System.out.println();
         
-        
-        System.out.println("Quando estiver pronto para pousar, insira s minúsculo.");
-        do{
-            aux = input.nextLine();
-        }while(!aux.equals("s"));
-        Pista p = new Pista();        
-        p.permitirPouso(a);
+        if(a.isVoando()){
+            System.out.println("Quando estiver pronto para pousar, insira s minúsculo.");
+            do{
+                aux = input.nextLine();
+            }while(!aux.equals("s"));
+            Pista p = new Pista();
+            p.permitirPouso(a);
+        }
     }
 }
