@@ -114,8 +114,8 @@ public class Aviao extends MeioTransporte implements Voador {
             return altitude;
         }       
        
-       /*@Override
-       public int compareTo(Aviao a){
+       
+      /* public int compareTo(Aviao a){
            return this.modelo.compareTo(a.getModelo());
        }*/
        
@@ -142,7 +142,7 @@ public class Aviao extends MeioTransporte implements Voador {
                if (d.equals("y")){
                    System.out.println("Insira a quantidade adicional ");
                    int aux = input.nextInt();
-                   setCombustivel(this.combustivel+aux);
+                   reabastecer(aux);
                    voar();
                }else{
                    setVoando(false);

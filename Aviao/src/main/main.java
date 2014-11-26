@@ -115,7 +115,12 @@ public class main {
             System.out.println("Insira a velociade máxima deste avião(km/h): ");
             respMaxSpeed = input.nextFloat();
         
-        AviaoMilitar a = new Supersonico(respPassag, respModelo, respAlt, respHoras, respComb, respMunicao, respBombas, false, false, respMaxSpeed);
+        AviaoMilitar aviao = new Supersonico(respPassag, respModelo, respAlt, respHoras, respComb, respMunicao, respBombas, false, false, respMaxSpeed);
+        Supersonico a = null;
+        
+        if (aviao instanceof Supersonico){
+            a = (Supersonico) aviao;
+        }
         
         System.out.println(a);
         
